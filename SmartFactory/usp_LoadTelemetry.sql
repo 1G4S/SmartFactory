@@ -1,22 +1,11 @@
--- ================================================
--- Template generated from Template Explorer using:
--- Create Procedure (New Menu).SQL
---
--- Use the Specify Values for Template Parameters 
--- command (Ctrl-Shift-M) to fill in the parameter 
--- values below.
---
--- This block of comments will not be included in
--- the definition of the procedure.
--- ================================================
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
 -- Author:		<Author,,Igor>
--- Create date: <Create Date,, 31.12.2025>
--- Description:	<Description,, Telemetry data quality firewall>
+-- Create date: <Create Date, 31.12.2025>
+-- Description:	<Description, Telemetry data quality firewall>
 -- =============================================
 
 CREATE OR ALTER PROCEDURE LoadTelemetry
@@ -29,7 +18,7 @@ CREATE OR ALTER PROCEDURE LoadTelemetry
 	@PowerUsage FLOAT
 AS
 BEGIN
--- SET NOCOUNT ON - Wylacza komunikaty wysylane do uzytkownika
+-- Wylacza komunikaty wysylane do uzytkownika
 	SET NOCOUNT ON;
 	DECLARE @ErrorMessage VARCHAR(255);
 	DECLARE @RawData VARCHAR(MAX);
@@ -44,7 +33,7 @@ BEGIN
 		'Pwr: ', @PowerUsage
 	);
 
-	-- Sprawdzenie czy temperatura ma poprawne wartoœci
+	-- Sprawdzenie czy parametry maja poprawne wartosci
 	IF (@Temperature < -20.0 OR @Temperature > 150.0)
 		OR (@VibrationLevel < 0.0 OR @VibrationLevel > 50.0)
 		OR (@RPM < 0.0 OR @RPM > 10000.0)
