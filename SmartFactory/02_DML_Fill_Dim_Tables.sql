@@ -8,11 +8,11 @@ DELETE FROM dim_Products;
 DELETE FROM dim_FailureCodes;
 DELETE FROM dim_Shifts;
 
-DBCC CHECKIDENT ('dim_Lines', RESEED, 0);
-DBCC CHECKIDENT ('dim_Machines', RESEED, 0);
-DBCC CHECKIDENT ('dim_Products', RESEED, 0);
-DBCC CHECKIDENT ('dim_FailureCodes', RESEED, 0);
-DBCC CHECKIDENT ('dim_Shifts', RESEED, 0);
+DBCC CHECKIDENT ('dim_Lines', RESEED, 1);
+DBCC CHECKIDENT ('dim_Machines', RESEED, 1);
+DBCC CHECKIDENT ('dim_Products', RESEED, 1);
+DBCC CHECKIDENT ('dim_FailureCodes', RESEED,1);
+DBCC CHECKIDENT ('dim_Shifts', RESEED, 1);
 
 SET NOCOUNT ON;
 
