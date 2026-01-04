@@ -44,7 +44,7 @@ VALUES
 ('S001', 'Brak materia³u na wejœciu', 'Logistic'),
 ('Q002', 'B³¹d wizyjny kamery', 'Quality');
 
-DECLARE @StartDate DATE = CAST(GETDATE() AS DATE);
+DECLARE @StartDate DATE = '2026-01-01';
 DECLARE @EndDate DATE = '2026-12-31';  
 DECLARE @LoopDate DATE = @StartDate;
 
@@ -63,7 +63,8 @@ BEGIN
         DayNumber, 
         DayName, 
         ShiftType, 
-        ShiftName
+        ShiftName,
+        KeyDate
         )
     VALUES (
         DATEADD(HOUR, 6, @DayBase), 
@@ -73,7 +74,8 @@ BEGIN
         @DayNum, 
         @DayName, 
         '1', 
-        'Zmiana Poranna'
+        'Zmiana Poranna',
+        CONVERT(INT, FORMAT(CAST(@DayBase AS Date), 'yyyMMdd'))
         );
     
     INSERT INTO dim_Shifts (
@@ -84,7 +86,8 @@ BEGIN
         DayNumber, 
         DayName, 
         ShiftType, 
-        ShiftName
+        ShiftName,
+        KeyDate
         )
     VALUES (
         DATEADD(HOUR, 14, @DayBase), 
@@ -94,7 +97,8 @@ BEGIN
         @DayNum, 
         @DayName, 
         '2', 
-        'Zmiana Popo³udniowa'
+        'Zmiana Popo³udniowa',
+        CONVERT(INT, FORMAT(CAST(@DayBase AS Date), 'yyyMMdd'))
         );
 
     INSERT INTO dim_Shifts (
@@ -105,7 +109,8 @@ BEGIN
         DayNumber, 
         DayName, 
         ShiftType, 
-        ShiftName
+        ShiftName,
+        KeyDate
         )
     VALUES (
         DATEADD(HOUR, 22, @DayBase), 
@@ -115,7 +120,8 @@ BEGIN
         @DayNum, 
         @DayName, 
         '3', 
-        'Zmiana Nocna'
+        'Zmiana Nocna',
+        CONVERT(INT, FORMAT(CAST(@DayBase AS Date), 'yyyMMdd'))
     );
 
     SET @LoopDate = DATEADD(DAY, 1, @LoopDate);
