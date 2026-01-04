@@ -34,9 +34,7 @@ AS
 	SELECT
 		p.Data,
 		l.LineID,
-		l.LineName,
 		m.MachineID,
-		m.MachineName,
 		ISNULL(ma.MalfunctionTime, 0) AS MalfunctionTime,
 		p.PlanTime,
 		p.PlanTime - ma.MalfunctionTime AS RunTime,

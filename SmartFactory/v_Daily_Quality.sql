@@ -16,11 +16,8 @@ SELECT
 		po.DateKey,
 		CAST(po.Timestamp AS DATE) AS DateValue,
 		l.LineID,
-		l.LineName,
 		po.MachineID,
-		m.MachineName,
 		po.ProductID,
-		p.ProductName,
 		SUM(po.IsGood) AS amount_of_good_details,
 		SUM(po.IsScrap) AS amount_of_scrap_details,
 		ISNULL(CAST(SUM(po.IsGood) AS FLOAT) / NULLIF(COUNT(*), 0), 0) AS QualityKPI_Value
@@ -32,4 +29,4 @@ FROM
 		ON po.MachineID = m.MachineID
 		INNER JOIN dim_Lines AS l
 		ON m.LineID = l.LineID
-GROUP BY po.DateKey, CAST(po.Timestamp AS DATE), l.LineID, l.LineName, po.MachineID, m.MachineName, po.ProductID, p.ProductName
+GROUP BY po.DateKey, CAST(po.Timestamp AS DATE), l.LineID, po.MachineID, po.ProductID

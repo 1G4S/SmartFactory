@@ -9,8 +9,8 @@ CREATE OR ALTER VIEW v_OEE_FactSheet
 AS
 	SELECT
 		p.DateDay,
-		p.LineName,
-		a.MachineName,
+		a.LineID,
+		a.MachineID,
 		a.AvailabilityKPI_Value,
 		q.QualityKPI_Value,
 		p.DailyPerformanceKPI_Value,

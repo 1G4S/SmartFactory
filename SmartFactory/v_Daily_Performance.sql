@@ -12,7 +12,6 @@ AS
 	SELECT 
 		CAST(po.Timestamp AS DATE) AS DateDay,
 		l.LineID,
-		l.LineName,
 		po.MachineID,
 		MAX(p.IdealCycleTime_sec) AS CycleTime,
 		SUM(po.IsGood) + SUM(po.IsScrap) AS AmountOfDetails,
@@ -28,4 +27,4 @@ AS
 		LEFT JOIN v_Daily_Availability AS av
 			ON po.MachineID = av.MachineID AND CAST(po.Timestamp AS DATE) = av.Data
 	WHERE p.IsCurrent = 1
-	GROUP BY CAST(po.Timestamp AS DATE), l.LineID, l.LineName, po.MachineID
+	GROUP BY CAST(po.Timestamp AS DATE), l.LineID, po.MachineID
