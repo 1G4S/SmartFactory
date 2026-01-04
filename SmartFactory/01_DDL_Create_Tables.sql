@@ -54,7 +54,8 @@ CREATE TABLE dim_Shifts(
 	DayNumber INT,
 	DayName VARCHAR(255),
 	ShiftType CHAR(1),
-	ShiftName VARCHAR(255)
+	ShiftName VARCHAR(255),
+	KeyDate INT
 )
 
 CREATE TABLE fct_ProductionPlan(
